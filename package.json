@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/SilasDemez/rest-Busplan/issues"
   },
-  "homepage": "https://github.com/SilasDemez/rest-Busplan#readme"
+  "homepage": "https://github.com/SilasDemez/rest-Busplan#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
 }
