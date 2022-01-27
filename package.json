@@ -1,22 +1,8 @@
 {
-  "name": "rest-busplan",
-  "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/SilasDemez/rest-Busplan.git"
-  },
-  "author": "Silas Demez, Gabriel Valentin",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/SilasDemez/rest-Busplan/issues"
-  },
-  "homepage": "https://github.com/SilasDemez/rest-Busplan#readme",
   "dependencies": {
     "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "parcel": "^2.2.1"
   }
 }
