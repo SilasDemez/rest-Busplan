@@ -34,8 +34,12 @@ parameters:
     outputFormat: JSON
 
 #### Response
-    Array mit Abfahrende Busse/Züge unter: servinglines.lines[]
-    mode.name: <Name>
-    mode.number: <Liniennummer>
-    mode.destination: <Zielort>
+    Array mit Daten unter: departureList[]
+    departureList.servingline.direction: <Zielort>
+    departureList.servingLine.destID: <ZielhaltestellenID>
+    departureList.servingLine.number: <Buslinie>
+    departureList.dateTime.monat: <Monat>
+    departureList.dateTime.day: <Tag>
+    departureList.dateTime.hour: <Stunde>
+    departureList.dateTime.minute: <Minute>
     
