@@ -1,6 +1,6 @@
 
 async function fetchData(){
-    let haltestelle = 660009989
+    let haltestelle = 66000998
     let url = `https://efa.sta.bz.it/apb/XML_DM_REQUEST?&locationServerActive=1&stateless=1&type_dm=any&name_dm=${haltestelle}&mode=direct&outputFormat=JSON`
     //'https://efa.sta.bz.it/apb/XML_DM_REQUEST?&locationServerActive=1&stateless=1&type_dm=any&name_dm=Brixen%20Brixen%20Bahnhof&mode=direct&outputFormat=JSON'
 
@@ -12,4 +12,7 @@ async function fetchData(){
 
 }
 
-fetchData();
+fetchData().then((res) => {
+    console.log(res);
+    console.log(res.servingLines.lines)
+});
