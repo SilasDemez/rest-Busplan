@@ -1,5 +1,20 @@
+body{
+    font-family: 'Roboto', sans-serif;
+}
 #busse{
 }
 
-#bus{
+.bus{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+}
+
+#lineID{
+    font-weight: 700;
+    background-color: rgb(58, 58, 153);
+    width: 50px;
+    padding: 10px 0;
+    text-align: center;
+    border-radius: 10px;
 }
