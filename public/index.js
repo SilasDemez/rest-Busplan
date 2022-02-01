@@ -28,14 +28,17 @@ async function fetchStation(ort){
 
 
 function checkifTrain(lineID){
-    let regex = '/^[A-z]/gm'
+    let regex = '[A-z]{1,} [0-9]{1,}';
+    //let regex = '.';
+    console.log(lineID);
+
+    return lineID.match(regex);
 }
 
 function writeToDoc(departureList){
     departureList.forEach((bus, i) => {
         // create parent div where bus info goes in
         let div = document.createElement('div');
-        console.log(i)
         div.setAttribute('id', `bus${i}`);
         div.setAttribute('class', 'bus')
         document.getElementById("busse").appendChild(div);
@@ -45,11 +48,16 @@ function writeToDoc(departureList){
         let direction_p = document.createElement('p');
         let time_p = document.createElement('p');
 
+        let line_ID = checkifTrain(bus.servingLine.number)
 
-        if(checkifTrain(bus.servingLine.number)){
 
+        if(line_ID){
+            console.log("Matched!");
+            console.log(line_ID)
+            lineID_p.innerHTML = `${line_ID}`;
+        }else{
+            lineID_p.innerHTML = `${bus.servingLine.number}`;
         }
-        lineID_p.innerHTML = `${bus.servingLine.number}`;
         direction_p.innerHTML = `${bus.servingLine.direction}`;
         time_p.innerHTML = `${bus.dateTime.day}.${bus.dateTime.month}.${bus.dateTime.year} ${bus.dateTime.hour}:${bus.dateTime.minute}`;
 
