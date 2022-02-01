@@ -13,8 +13,17 @@ body{
 #lineID{
     font-weight: 700;
     background-color: rgb(58, 58, 153);
-    width: 50px;
-    padding: 10px 0;
+    padding: 10px 10px;
     text-align: center;
     border-radius: 10px;
+}
+
+#direction{
+    padding: 10px 10px;
+    text-align: center;
+}
+
+#time{
+    padding: 10px 10px;
+    text-align: center;
 }
