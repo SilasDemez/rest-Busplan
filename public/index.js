@@ -26,12 +26,41 @@ async function fetchStation(ort){
 
 }
 
+async function fetchWeatherRadar(){
+    let url = `	http://daten.buergernetz.bz.it/services/weather/radarhd?lang=de&format=json`
+
+    try{
+        const response = await fetch(url, {
+            method: 'get',
+        })
+        
+        return response.json();
+    }catch(error){
+        alert('Fehler bei der Kommunikation mitr der API. Bitte noch einmal probieren');
+    }
+
+
+}
+
+
+async function setImgofRadar(res){
+    /*
+    await res.rows.forEach((img) => {
+        new Promise(r => setTimeout(r, 2000));
+        document.getElementById("animation").src = img.foregroundUrl;
+        console.log("Test");
+    });
+    
+    */
+
+    for(i=0; i<res.rows.length;i++){
+        await new Promise(r => setTimeout(r, 1000));
+        document.getElementById("animation").src = res.rows[i].foregroundUrl;
+    }
+}
 
 function checkifTrain(lineID){
     let regex = '[A-z]{1,} [0-9]{1,}';
-    //let regex = '.';
-    console.log(lineID);
-
     return lineID.match(regex);
 }
 
@@ -88,3 +117,8 @@ fetchBusescomingby(66001143).then((res) => {
     writeToDoc(res.departureList);
 });
 
+fetchWeatherRadar().then((res) => {
+    console.log(res);
+    console.log(res.rows[0].foregroundUrl);
+    setImgofRadar(res);
+});
