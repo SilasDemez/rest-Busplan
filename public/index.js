@@ -82,7 +82,7 @@ fetchStation("Brixen").then((res) => {
 });
 */
 
-fetchBusescomingby(66000998).then((res) => {
+fetchBusescomingby(66001143).then((res) => {
     console.log(res);
     console.log(res.departureList)
     writeToDoc(res.departureList);
