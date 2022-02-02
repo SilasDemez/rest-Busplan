@@ -1,13 +1,28 @@
-body {
+* {
+  /* standart stuff for css */
+  margin: 0;
+  padding: 0;
   font-family: "Roboto", sans-serif;
   background-color: rgb(40, 42, 54);
-  color: white;
+}
+
+body {
+  margin: 20px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
 }
 
 #busse {
+  min-width: 30%;
+  max-width: 40%;
+  overflow: auto;
+  max-height: 95vh;
 }
 
 .bus {
+  margin: 10px 0px 10px 0px;
+  color: white;
   display: flex;
   width: 100%;
   flex-direction: row;
@@ -29,4 +44,10 @@ body {
 #time {
   padding: 10px 10px;
   text-align: center;
+}
+
+.board {
+  max-width: 70%;
+  min-width: 60%;
+  background-color: red;
 }
