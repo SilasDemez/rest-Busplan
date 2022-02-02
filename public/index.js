@@ -44,18 +44,33 @@ async function fetchWeatherRadar(){
 
 
 async function setImgofRadar(res){
-    /*
-    await res.rows.forEach((img) => {
-        new Promise(r => setTimeout(r, 2000));
-        document.getElementById("animation").src = img.foregroundUrl;
-        console.log("Test");
-    });
-    
-    */
-
-    for(i=0; i<res.rows.length;i++){
+    let durchlaufe=0
+    for(i=0;;i++){
+        durchlaufe++
         await new Promise(r => setTimeout(r, 1000));
         document.getElementById("animation").src = res.rows[i].foregroundUrl;
+        console.log(durchlaufe)
+        if (durchlaufe == 60) {
+            console.log("Beende")
+            return 1
+        }
+        if(i == res.rows.length-1){
+            await new Promise(r => setTimeout(r, 1000));
+            i = 0
+        }
+    }
+}
+
+async function endlessRadar(){
+    while (true){
+        console.log("Loading radar");
+        await fetchWeatherRadar().then((res) => {
+            console.log(res);
+            console.log(res.rows[0].foregroundUrl);
+            setImgofRadar(res);
+        });
+
+        await new Promise(r => setTimeout(r, 60000));
     }
 }
 
@@ -117,8 +132,12 @@ fetchBusescomingby(66001143).then((res) => {
     writeToDoc(res.departureList);
 });
 
+
+//endlessRadar()
+
 fetchWeatherRadar().then((res) => {
     console.log(res);
     console.log(res.rows[0].foregroundUrl);
     setImgofRadar(res);
 });
+
