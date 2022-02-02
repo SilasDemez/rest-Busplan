@@ -50,7 +50,7 @@ async function setImgofRadar(res){
         await new Promise(r => setTimeout(r, 1000));
         document.getElementById("animation").src = res.rows[i].foregroundUrl;
         console.log(durchlaufe)
-        if (durchlaufe == 60) {
+        if (durchlaufe == 169) {
             console.log("Beende")
             return 1
         }
@@ -133,11 +133,12 @@ fetchBusescomingby(66001143).then((res) => {
 });
 
 
-//endlessRadar()
-
+endlessRadar()
+/*
 fetchWeatherRadar().then((res) => {
     console.log(res);
     console.log(res.rows[0].foregroundUrl);
     setImgofRadar(res);
 });
 
+*/
