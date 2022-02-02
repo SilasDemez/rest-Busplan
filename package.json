@@ -1,7 +1,7 @@
 {
   "name": "rest-busplan",
   "version": "1.0.0",
-  "description": "",
+  "description": "url : https://efa.sta.bz.it/apb/XML_DM_REQUEST",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,15 +10,13 @@
     "type": "git",
     "url": "git+https://github.com/SilasDemez/rest-Busplan.git"
   },
-  "author": "Silas Demez, Gabriel Valentin",
-  "license": "MIT",
+  "author": "",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/SilasDemez/rest-Busplan/issues"
   },
   "homepage": "https://github.com/SilasDemez/rest-Busplan#readme",
   "dependencies": {
-    "express": "^4.17.2",
-    "node-fetch": "^3.2.0",
-    "nodemon": "^2.0.15"
+    "express": "^4.17.2"
   }
 }
