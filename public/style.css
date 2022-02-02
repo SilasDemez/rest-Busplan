@@ -9,15 +9,15 @@
 body {
   margin: 20px;
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
+  max-height: 95vh;
+  overflow: hidden;
   justify-content: space-between;
 }
 
 #busse {
-  min-width: 30%;
-  max-width: 40%;
-  overflow: auto;
-  max-height: 95vh;
+  width: 30%;
+  overflow: hidden;
 }
 
 .bus {
@@ -27,7 +27,6 @@ body {
   width: 100%;
   flex-direction: row;
 }
-
 #lineID {
   font-weight: 700;
   background-color: rgb(58, 58, 153);
@@ -48,6 +47,30 @@ body {
 
 .board {
   max-width: 70%;
-  min-width: 60%;
+  min-width: 70%;
   background-color: red;
+  display: flex;
+  flex-direction: column;
+}
+.weather {
+  width: fit-content;
+  height: fit-content;
+}
+.weather_box_lightest {
+  width: 500px;
+  height: 500px;
+  object-fit: scale-down;
+  background-color: rgb(40, 42, 54);
+  color: white;
+}
+
+.img-responsive {
+  width: 500px;
+  height: 500px;
+  object-fit: scale-down;
+  background-image: url("//wetter.provinz.bz.it/images/fileN_d_background.jpg");
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+  margin: 0 auto;
 }
