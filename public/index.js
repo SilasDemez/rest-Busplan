@@ -96,6 +96,12 @@ async function setImgofPrediction(){
 
 }
 
+function parseminute(minute){
+    if(minute.length == 1){
+        return "0" + minute
+    }else return minute
+}
+
 function checkifTrain(lineID){
     let regex = '[A-z]{1,} [0-9]{1,}';
     return lineID.match(regex);
@@ -127,7 +133,11 @@ function writeToDoc(departureList){
             lineID_p.innerHTML = `${bus.servingLine.number}`;
         }
         direction_p.innerHTML = `${bus.servingLine.direction}`;
-        time_p.innerHTML = `${bus.dateTime.day}.${bus.dateTime.month}.${bus.dateTime.year} ${bus.dateTime.hour}:${bus.dateTime.minute}`;
+        //time_p.innerHTML = `${bus.dateTime.day}.${bus.dateTime.month}.${bus.dateTime.year} ${bus.dateTime.hour}:${bus.dateTime.minute}`;
+
+        let minute = parseminute(bus.dateTime.minute)
+
+        time_p.innerHTML = `${bus.dateTime.hour}:${minute}`;
 
         lineID_p.setAttribute('id', 'lineID');
         direction_p.setAttribute('id', 'direction');
