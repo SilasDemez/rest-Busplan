@@ -2,15 +2,22 @@
 async function fetchBusescomingby(haltestellenID){
     let url = `https://efa.sta.bz.it/apb/XML_DM_REQUEST?&locationServerActive=1&stateless=1&type_dm=any&name_dm=${haltestellenID}&mode=direct&outputFormat=JSON`
 
-    try{
+    //try{
+        //console.log("Hallo")
         const response = await fetch(url, {
             method: 'get',
         })
         
-        return response.json();
-    }catch(error){
+        response.json().then((res) => {
+            console.log("Test")
+            console.log(res)
+            writeToDoc(res.departureList);
+        })
+        
+        // return response.json();
+    /*}catch(error){
         alert('Fehler bei der Kommunikation mitr der API. Bitte noch einmal probieren');
-    }
+    }*/
 
 
 }
@@ -72,7 +79,7 @@ async function endlessRadar(){
             setImgofRadar(res);
         });
 
-        await new Promise(r => setTimeout(r, 169000));
+        await new Promise(r => setTimeout(r, 183000));
     }
 }
 
@@ -82,7 +89,7 @@ async function setImgofPrediction(){
         await new Promise(r => setTimeout(r, 1000));
         if(i==33) i=0
         url = `https://wetter.provinz.bz.it/images/wforecast${i}.jpg`
-        console.log(url)
+        //console.log(url)
         document.getElementById("forecast").src = url;
         i++
     }
@@ -95,6 +102,8 @@ function checkifTrain(lineID){
 }
 
 function writeToDoc(departureList){
+    console.log(departureList)
+    document.getElementById("busse").innerHTML = ''
     departureList.forEach((bus, i) => {
         // create parent div where bus info goes in
         let div = document.createElement('div');
@@ -132,6 +141,14 @@ function writeToDoc(departureList){
 
 }
 
+
+
+fetchBusescomingby(66001143)
+setInterval(fetchBusescomingby, 60000, 66001143)
+
+endlessRadar()
+setImgofPrediction()
+
 /*
 fetchStation("Brixen").then((res) => {
     console.log(res);
@@ -140,16 +157,14 @@ fetchStation("Brixen").then((res) => {
 
 });
 */
-
+/*
 fetchBusescomingby(66001143).then((res) => {
     console.log(res);
     console.log(res.departureList)
     writeToDoc(res.departureList);
 });
 
-
-endlessRadar()
-setImgofPrediction()
+*/
 /*
 fetchWeatherRadar().then((res) => {
     console.log(res);
