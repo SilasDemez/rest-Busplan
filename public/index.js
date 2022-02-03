@@ -52,7 +52,9 @@ async function setImgofRadar(res){
         console.log(durchlaufe)
         if (durchlaufe == 169) {
             console.log("Beende")
-            return 1
+            return 0
+            break
+
         }
         if(i == res.rows.length-1){
             await new Promise(r => setTimeout(r, 1000));
@@ -70,8 +72,21 @@ async function endlessRadar(){
             setImgofRadar(res);
         });
 
-        await new Promise(r => setTimeout(r, 60000));
+        await new Promise(r => setTimeout(r, 169000));
     }
+}
+
+async function setImgofPrediction(){
+    let i=0,url
+    while(true){
+        await new Promise(r => setTimeout(r, 1000));
+        if(i==33) i=0
+        url = `https://wetter.provinz.bz.it/images/wforecast${i}.jpg`
+        console.log(url)
+        document.getElementById("forecast").src = url;
+        i++
+    }
+
 }
 
 function checkifTrain(lineID){
@@ -134,6 +149,7 @@ fetchBusescomingby(66001143).then((res) => {
 
 
 endlessRadar()
+setImgofPrediction()
 /*
 fetchWeatherRadar().then((res) => {
     console.log(res);
