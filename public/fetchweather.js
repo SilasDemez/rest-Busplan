@@ -10,9 +10,14 @@ async function fetchWeatherForecast(url) {
   return wfjson;
 }
 
+api_key = "71125cb6421b64923a47b4dd51af9a2a";
+
 const wf = fetchWeatherForecast(
   //benutz openweather api
-  "https://tourism.api.opendatahub.bz.it/v1/Weather?language=en&locfilter=3&extended=true"
+
+  "https://api.openweathermap.org/data/2.5/forecast?lat=46.715&lon=11.656&appid=" +
+    api_key +
+    "&units=metric"
 );
 
-console.log(wf);
+document.getElementById("weatherforecast");

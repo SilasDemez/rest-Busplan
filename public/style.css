@@ -50,27 +50,38 @@ body {
   min-width: 70%;
   background-color: red;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 .weather {
   width: fit-content;
   height: fit-content;
 }
 .weather_box_lightest {
-  width: 500px;
-  height: 500px;
+  width: 400px;
+  height: 400px;
   object-fit: scale-down;
   background-color: rgb(40, 42, 54);
   color: white;
 }
 
 .img-responsive {
-  width: 500px;
-  height: 500px;
+  width: 400px;
+  height: 400px;
   object-fit: scale-down;
   background-image: url("//wetter.provinz.bz.it/images/fileN_d_background.jpg");
   background-repeat: no-repeat;
   background-position: top center;
   background-size: cover;
   margin: 0 auto;
+}
+
+#forecastdiv {
+  width: 400px;
+  height: 400px;
+  object-fit: scale-down;
+}
+#forecast {
+  width: 400px;
+  height: 400px;
+  object-fit: scale-down;
 }
