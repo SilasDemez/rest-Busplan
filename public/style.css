@@ -3,7 +3,8 @@
   margin: 0;
   padding: 0;
   font-family: "Roboto", sans-serif;
-  background-color: rgb(40, 42, 54);
+  /*background-color: rgb(40, 42, 54); */
+  background-color: rgb(255, 255, 255);
 }
 
 body {
@@ -22,7 +23,8 @@ body {
 
 .bus {
   margin: 10px 0px 10px 0px;
-  color: white;
+  /*color: white; */
+  color: black;
   display: flex;
   width: 100%;
   flex-direction: row;
@@ -30,6 +32,7 @@ body {
 #lineID {
   font-weight: 700;
   background-color: rgb(58, 58, 153);
+  color: white;
   padding: 10px 10px;
   text-align: center;
   border-radius: 10px;
@@ -68,7 +71,7 @@ body {
   width: 400px;
   height: 400px;
   object-fit: scale-down;
-  background-image: url("//wetter.provinz.bz.it/images/fileN_d_background.jpg");
+  /*background-image: url("//wetter.provinz.bz.it/images/fileN_d_background.jpg"); */
   background-repeat: no-repeat;
   background-position: top center;
   background-size: cover;
