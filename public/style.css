@@ -17,7 +17,7 @@ body {
 }
 
 #busse {
-  width: 30%;
+  width: 22%;
   overflow: hidden;
 
   padding-right: 10px;
@@ -52,8 +52,8 @@ body {
 }
 
 .board {
-  max-width: 70%;
-  min-width: 70%;
+  max-width: 78%;
+  min-width: 78%;
   background-color: grey;
   display: flex;
   flex-direction: row;
