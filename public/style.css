@@ -19,10 +19,13 @@ body {
 #busse {
   width: 30%;
   overflow: hidden;
+
+  padding-right: 10px;
 }
 
 .bus {
-  margin: 10px 0px 10px 0px;
+  justify-content: space-between;
+  margin-top: 2px;
   /*color: white; */
   color: black;
   display: flex;
@@ -51,7 +54,7 @@ body {
 .board {
   max-width: 70%;
   min-width: 70%;
-  background-color: red;
+  background-color: grey;
   display: flex;
   flex-direction: row;
 }
@@ -60,16 +63,16 @@ body {
   height: fit-content;
 }
 .weather_box_lightest {
-  width: 400px;
-  height: 400px;
+  width: 25rem;
+  height: 25rem;
   object-fit: scale-down;
   background-color: rgb(40, 42, 54);
   color: white;
 }
 
 .img-responsive {
-  width: 400px;
-  height: 400px;
+  width: 25rem;
+  height: 25rem;
   object-fit: scale-down;
   /*background-image: url("//wetter.provinz.bz.it/images/fileN_d_background.jpg"); */
   background-repeat: no-repeat;
@@ -79,12 +82,12 @@ body {
 }
 
 #forecastdiv {
-  width: 400px;
-  height: 400px;
+  width: 25rem;
+  height: 25rem;
   object-fit: scale-down;
 }
 #forecast {
-  width: 400px;
-  height: 400px;
+  width: 25rem;
+  height: 25rem;
   object-fit: scale-down;
 }
