@@ -1,3 +1,5 @@
+const teacher_url = 'http://10.10.30.212:5000'
+
 
 async function fetchBusescomingby(haltestellenID){
     let url = `https://efa.sta.bz.it/apb/XML_DM_REQUEST?&locationServerActive=1&stateless=1&type_dm=any&name_dm=${haltestellenID}&mode=direct&outputFormat=JSON`
@@ -153,11 +155,60 @@ function writeToDoc(departureList){
 
 
 
+/*
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+*/
+
+
+function writeTeachersToDoc(teachers){
+    console.log(teachers)
+    document.getElementById("teacher_of_the_week").innerHTML = ''
+    for(i=0; i<3; i++){
+        let teacher = teachers.count[i]
+        console.log(teacher)
+
+        let div = document.createElement('div');
+
+        div.setAttribute('id', `${teacher.name}`);
+        div.setAttribute('class', 'teacher')
+
+        document.getElementById("teacher_of_the_week").appendChild(div);
+
+        let name = document.createElement('p');
+        let count = document.createElement('p');
+
+        name.innerHTML = teacher.name
+        name.setAttribute('class', 'names')
+
+        count.innerHTML = teacher.count
+        count.setAttribute('class', 'counts')
+
+
+        document.getElementById(`${teacher.name}`).appendChild(name)
+        document.getElementById(`${teacher.name}`).appendChild(count)
+    }
+}
+
+async function fetchLeaderboard(){
+    const response = await fetch(`${teacher_url}/leaderboard`, {
+        method: 'get',
+        mode: 'no-cors'
+    });
+    response.json().then((res) => {
+        writeTeachersToDoc(res)
+    })
+}
+
+/*
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+*/
+
 fetchBusescomingby(66001143)
 setInterval(fetchBusescomingby, 60000, 66001143)
 
 endlessRadar()
 setImgofPrediction()
+fetchLeaderboard()
 
 /*
 fetchStation("Brixen").then((res) => {
