@@ -208,7 +208,7 @@ setInterval(fetchBusescomingby, 60000, 66001143)
 
 endlessRadar()
 setImgofPrediction()
-fetchLeaderboard()
+//fetchLeaderboard()
 
 /*
 fetchStation("Brixen").then((res) => {
