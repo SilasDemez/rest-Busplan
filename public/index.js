@@ -192,7 +192,7 @@ function writeTeachersToDoc(teachers){
 async function fetchLeaderboard(){
     console.log(`${teacher_url}/leaderboard`)
     const response = await fetch(`${teacher_url}/leaderboard`, {
-        method: 'get',
+        method: 'get'
     });
     
     response.json().then((res) => {
