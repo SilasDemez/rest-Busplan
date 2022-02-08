@@ -193,7 +193,7 @@ async function fetchLeaderboard(){
     console.log(`${teacher_url}/leaderboard`)
     const response = await fetch(`${teacher_url}/leaderboard`, {
         method: 'get',
-        mode: 'cors'
+        mode: 'no-cors'
     });
     
     response.json().then((res) => {
