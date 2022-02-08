@@ -1,4 +1,4 @@
-const teacher_url = 'https://teacher-of-the-week.herokuapp.com'
+const teacher_url = 'http://teacher-of-the-week.herokuapp.com'
 
 
 async function fetchBusescomingby(haltestellenID){
@@ -193,6 +193,7 @@ async function fetchLeaderboard(){
     console.log(`${teacher_url}/leaderboard`)
     const response = await fetch(`${teacher_url}/leaderboard`, {
         method: 'get',
+        mode: 'cors'
     });
     
     response.json().then((res) => {
