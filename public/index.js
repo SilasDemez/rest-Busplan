@@ -1,4 +1,4 @@
-const teacher_url = 'http://teacher-of-the-week.herokuapp.com'
+const teacher_url = 'https://teacher-of-the-week.herokuapp.com'
 
 
 async function fetchBusescomingby(haltestellenID){
