@@ -161,10 +161,14 @@ function writeToDoc(departureList){
 
 
 function writeTeachersToDoc(teachers){
-    console.log(teachers)
+    let arr = teachers.count;
+    arr.sort(function (a, b) {
+      return b.count - a.count;
+    });
+    console.log(arr)
     document.getElementById("teacher_of_the_week").innerHTML = ''
     for(i=0; i<3; i++){
-        let teacher = teachers.count[i]
+        let teacher = arr[i]
         console.log(teacher)
 
         let div = document.createElement('div');
