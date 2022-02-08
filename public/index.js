@@ -1,4 +1,4 @@
-const teacher_url = 'http://10.10.30.212:5000'
+const teacher_url = 'https://teacher-of-the-week.herokuapp.com'
 
 
 async function fetchBusescomingby(haltestellenID){
@@ -190,11 +190,13 @@ function writeTeachersToDoc(teachers){
 }
 
 async function fetchLeaderboard(){
+    console.log(`${teacher_url}/leaderboard`)
     const response = await fetch(`${teacher_url}/leaderboard`, {
         method: 'get',
-        mode: 'no-cors'
     });
+    
     response.json().then((res) => {
+        console.log(res)
         writeTeachersToDoc(res)
     })
 }
@@ -208,7 +210,7 @@ setInterval(fetchBusescomingby, 60000, 66001143)
 
 endlessRadar()
 setImgofPrediction()
-//fetchLeaderboard()
+fetchLeaderboard()
 
 /*
 fetchStation("Brixen").then((res) => {
