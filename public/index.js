@@ -92,7 +92,6 @@ async function setImgofPrediction() {
   }
 }
 
-
 async function setImgofRadar() {
   let i = 1,
     url;
@@ -120,7 +119,9 @@ function checkifTrain(lineID) {
 function writeToDoc(departureList) {
   console.log(departureList);
   document.getElementById("busse").innerHTML = "";
-  departureList.forEach((bus, i) => {
+
+  for (i = 0; i < 15; i++) {
+    let bus = departureList[i];
     // create parent div where bus info goes in
     let div = document.createElement("div");
     div.setAttribute("id", `bus${i}`);
@@ -155,7 +156,7 @@ function writeToDoc(departureList) {
     document.getElementById(`bus${i}`).appendChild(lineID_p);
     document.getElementById(`bus${i}`).appendChild(direction_p);
     document.getElementById(`bus${i}`).appendChild(time_p);
-  });
+  }
 }
 
 /*
@@ -215,7 +216,7 @@ setInterval(fetchBusescomingby, 60000, 66001143);
 
 //endlessRadar();
 setImgofPrediction();
-setImgofRadar()
+setImgofRadar();
 fetchLeaderboard();
 
 /*
