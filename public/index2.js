@@ -32,7 +32,7 @@ function parseminute(minute) {
 }
 
 async function fetchWeather() {
-  let url = `https://api.openweathermap.org/data/2.5/onecall?lat=46.715&lon=11.656&exclude=hourly,minutely&appid=71125cb6421b64923a47b4dd51af9a2a&units=metric`;
+  let url = `https://api.openweathermap.org/data/2.5/onecall?lat=46.715&lon=11.656&exclude=hourly,minutely&appid=71125cb6421b64923a47b4dd51af9a2a&units=metric&lang=de`;
 
   const response = await fetch(url, {
     method: "get",
@@ -93,6 +93,12 @@ function writeToDoc(departureList) {
 }
 
 function writeWeatherToDoc(weather) {
+
+  let div = document.createElement("div");
+  div.setAttribute("id", `weather_info`);
+  div.innerHTML = "Wetter Brixen"
+  document.getElementById("weather").appendChild(div);
+
   for (i = 0; i < 7; i++) {
     let messung = weather.daily[i];
     console.log(messung);
@@ -104,18 +110,26 @@ function writeWeatherToDoc(weather) {
     document.getElementById("weather").appendChild(div);
 
     // crete a children div for every single info
-    let icon = document.createElement("p");
+    let icon = document.createElement("img");
+    let weather_description = document.createElement("p");
     let min = document.createElement("p");
     let max = document.createElement("p");
 
+    icon.setAttribute("src", `https://openweathermap.org/img/wn/${messung.weather[0].icon}@2x.png`)
+    weather_description.innerHTML = messung.weather[0].description
+    min.innerHTML = Math.round(messung.temp.min);
+    max.innerHTML = Math.round(messung.temp.max);
 
-    lineID_p.setAttribute("id", "lineID");
-    direction_p.setAttribute("id", "direction");
-    time_p.setAttribute("id", "time");
 
-    document.getElementById(`bus${i}`).appendChild(lineID_p);
-    document.getElementById(`bus${i}`).appendChild(direction_p);
-    document.getElementById(`bus${i}`).appendChild(time_p);
+    icon.setAttribute("id", "icon");
+    weather_description.setAttribute("id", "weather_description");
+    min.setAttribute("id", "min");
+    max.setAttribute("id", "max");
+
+    document.getElementById(`day${i}`).appendChild(icon);
+    document.getElementById(`day${i}`).appendChild(weather_description);
+    document.getElementById(`day${i}`).appendChild(min);
+    document.getElementById(`day${i}`).appendChild(max);
   }
 }
 
