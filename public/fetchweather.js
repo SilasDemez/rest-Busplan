@@ -11,14 +11,12 @@ async function fetchWeatherForecast(url) {
   return wfjson;
 }
 
-let api_key = process.env.api_key;
+let api_key = '71125cb6421b64923a47b4dd51af9a2a';
 
 const wf = fetchWeatherForecast(
   //benutz openweather api
 
-  "https://api.openweathermap.org/data/2.5/forecast?lat=46.715&lon=11.656&appid=" +
-    api_key +
-    "&units=metric"
+  "https://api.openweathermap.org/data/2.5/forecast?lat=46.715&lon=11.656&appid=" + api_key + "&units=metric"
 );
 
 document.getElementById("weatherforecast");

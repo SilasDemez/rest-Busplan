@@ -10,15 +10,9 @@ async function fetchBusescomingby(haltestellenID) {
   });
 
   response.json().then((res) => {
-    console.log("Test");
-    console.log(res);
+    //console.log(res);
     writeToDoc(res.departureList);
   });
-
-  // return response.json();
-  /*}catch(error){
-        alert('Fehler bei der Kommunikation mitr der API. Bitte noch einmal probieren');
-    }*/
 }
 
 async function fetchStation(ort) {
@@ -37,13 +31,26 @@ function parseminute(minute) {
   } else return minute;
 }
 
+async function fetchWeather() {
+  let url = `https://api.openweathermap.org/data/2.5/onecall?lat=46.715&lon=11.656&exclude=hourly,minutely&appid=71125cb6421b64923a47b4dd51af9a2a&units=metric`;
+
+  const response = await fetch(url, {
+    method: "get",
+  });
+
+  response.json().then((res) => {
+    console.log(res);
+    writeWeatherToDoc(res);
+  });
+}
+
 function checkifTrain(lineID) {
   let regex = "[A-z]{1,} [0-9]{1,}";
   return lineID.match(regex);
 }
 
 function writeToDoc(departureList) {
-  console.log(departureList);
+  //console.log(departureList);
   document.getElementById("busse").innerHTML = "";
 
   for (i = 0; i < 15; i++) {
@@ -62,7 +69,7 @@ function writeToDoc(departureList) {
     let line_ID = checkifTrain(bus.servingLine.number);
 
     if (line_ID) {
-      console.log("Matched!");
+      //console.log("Matched!");
       console.log(line_ID);
       lineID_p.innerHTML = `${line_ID}`;
     } else {
@@ -85,6 +92,33 @@ function writeToDoc(departureList) {
   }
 }
 
+function writeWeatherToDoc(weather) {
+  for (i = 0; i < 7; i++) {
+    let messung = weather.daily[i];
+    console.log(messung);
+
+    // create parent div where bus info goes in
+    let div = document.createElement("div");
+    div.setAttribute("id", `day${i}`);
+    div.setAttribute("class", "day");
+    document.getElementById("weather").appendChild(div);
+
+    // crete a children div for every single info
+    let icon = document.createElement("p");
+    let min = document.createElement("p");
+    let max = document.createElement("p");
+
+
+    lineID_p.setAttribute("id", "lineID");
+    direction_p.setAttribute("id", "direction");
+    time_p.setAttribute("id", "time");
+
+    document.getElementById(`bus${i}`).appendChild(lineID_p);
+    document.getElementById(`bus${i}`).appendChild(direction_p);
+    document.getElementById(`bus${i}`).appendChild(time_p);
+  }
+}
+
 /*
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 */
@@ -94,11 +128,11 @@ function writeTeachersToDoc(teachers) {
   arr.sort(function (a, b) {
     return b.count - a.count;
   });
-  console.log(arr);
+  //console.log(arr);
   document.getElementById("teacher_of_the_week").innerHTML = "";
   for (i = 0; i < 3; i++) {
     let teacher = arr[i];
-    console.log(teacher);
+    //console.log(teacher);
 
     let div = document.createElement("div");
 
@@ -122,13 +156,13 @@ function writeTeachersToDoc(teachers) {
 }
 
 async function fetchLeaderboard() {
-  console.log(`${teacher_url}/leaderboard`);
+  //console.log(`${teacher_url}/leaderboard`);
   const response = await fetch(`${teacher_url}/leaderboard`, {
     method: "get",
   });
 
   response.json().then((res) => {
-    console.log(res);
+    //console.log(res);
     writeTeachersToDoc(res);
   });
 }
@@ -141,3 +175,4 @@ fetchBusescomingby(66001143);
 setInterval(fetchBusescomingby, 60000, 66001143);
 
 fetchLeaderboard();
+fetchWeather();
