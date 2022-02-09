@@ -92,6 +92,20 @@ async function setImgofPrediction() {
   }
 }
 
+
+async function setImgofRadar() {
+  let i = 1,
+    url;
+  while (true) {
+    await new Promise((r) => setTimeout(r, 1000));
+    if (i == 15) i = 1;
+    url = `https://wetter.provinz.bz.it/images/fileN_d_${i}.png`;
+    //console.log(url)
+    document.getElementById("animation").src = url;
+    i++;
+  }
+}
+
 function parseminute(minute) {
   if (minute.length == 1) {
     return "0" + minute;
@@ -199,8 +213,9 @@ async function fetchLeaderboard() {
 fetchBusescomingby(66001143);
 setInterval(fetchBusescomingby, 60000, 66001143);
 
-endlessRadar();
+//endlessRadar();
 setImgofPrediction();
+setImgofRadar()
 fetchLeaderboard();
 
 /*
@@ -227,12 +242,3 @@ fetchWeatherRadar().then((res) => {
 });
 
 */
-
-
-let xhr = new XMLHttpRequest();
-xhr.open('get', 'http://daten.buergernetz.bz.it/services/weather/radarhd?lang=de&format=json.com/posts/1');
-xhr.send();
-
-xhr.onload = function() {
-    console.log(xhr.response);
-};
