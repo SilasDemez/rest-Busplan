@@ -10,15 +10,9 @@ async function fetchBusescomingby(haltestellenID) {
   });
 
   response.json().then((res) => {
-    console.log("Test");
-    console.log(res);
+    //console.log(res);
     writeToDoc(res.departureList);
   });
-
-  // return response.json();
-  /*}catch(error){
-        alert('Fehler bei der Kommunikation mitr der API. Bitte noch einmal probieren');
-    }*/
 }
 
 async function fetchStation(ort) {
@@ -31,84 +25,23 @@ async function fetchStation(ort) {
   return response.json();
 }
 
-async function fetchWeatherRadar() {
-  let url = `http://daten.buergernetz.bz.it/services/weather/radarhd?lang=de&format=json`;
-
-  try {
-    const response = await fetch(url, {
-      method: "get",
-    });
-
-    return response.json();
-  } catch (error) {
-    alert(
-      "Fehler bei der Kommunikation mitr der API. Bitte noch einmal probieren"
-    );
-  }
-}
-
-async function setImgofRadar(res) {
-  let durchlaufe = 0;
-  for (i = 0; ; i++) {
-    durchlaufe++;
-    await new Promise((r) => setTimeout(r, 1000));
-    document.getElementById("animation").src = res.rows[i].foregroundUrl;
-    console.log(durchlaufe);
-    if (durchlaufe == 169) {
-      console.log("Beende");
-      return 0;
-      break;
-    }
-    if (i == res.rows.length - 1) {
-      await new Promise((r) => setTimeout(r, 1000));
-      i = 0;
-    }
-  }
-}
-
-async function endlessRadar() {
-  while (true) {
-    console.log("Loading radar");
-    await fetchWeatherRadar().then((res) => {
-      console.log(res);
-      console.log(res.rows[0].foregroundUrl);
-      setImgofRadar(res);
-    });
-
-    await new Promise((r) => setTimeout(r, 183000));
-  }
-}
-
-async function setImgofPrediction() {
-  let i = 0,
-    url;
-  while (true) {
-    await new Promise((r) => setTimeout(r, 1000));
-    if (i == 33) i = 0;
-    url = `https://wetter.provinz.bz.it/images/wforecast${i}.jpg`;
-    //console.log(url)
-    document.getElementById("forecast").src = url;
-    i++;
-  }
-}
-
-async function setImgofRadar() {
-  let i = 1,
-    url;
-  while (true) {
-    await new Promise((r) => setTimeout(r, 1000));
-    if (i == 15) i = 1;
-    url = `https://wetter.provinz.bz.it/images/fileN_d_${i}.png`;
-    //console.log(url)
-    document.getElementById("animation").src = url;
-    i++;
-  }
-}
-
 function parseminute(minute) {
   if (minute.length == 1) {
     return "0" + minute;
   } else return minute;
+}
+
+async function fetchWeather() {
+  let url = `https://api.openweathermap.org/data/2.5/onecall?lat=46.715&lon=11.656&exclude=hourly,minutely&appid=71125cb6421b64923a47b4dd51af9a2a&units=metric&lang=de`;
+
+  const response = await fetch(url, {
+    method: "get",
+  });
+
+  response.json().then((res) => {
+    console.log(res);
+    writeWeatherToDoc(res);
+  });
 }
 
 function checkifTrain(lineID) {
@@ -117,7 +50,7 @@ function checkifTrain(lineID) {
 }
 
 function writeToDoc(departureList) {
-  console.log(departureList);
+  //console.log(departureList);
   document.getElementById("busse").innerHTML = "";
 
   for (i = 0; i < 15; i++) {
@@ -136,7 +69,7 @@ function writeToDoc(departureList) {
     let line_ID = checkifTrain(bus.servingLine.number);
 
     if (line_ID) {
-      console.log("Matched!");
+      //console.log("Matched!");
       console.log(line_ID);
       lineID_p.innerHTML = `${line_ID}`;
     } else {
@@ -159,6 +92,47 @@ function writeToDoc(departureList) {
   }
 }
 
+function writeWeatherToDoc(weather) {
+
+  let div = document.createElement("div");
+  div.setAttribute("id", `weather_info`);
+  div.innerHTML = "Wetter Brixen"
+  document.getElementById("weather").appendChild(div);
+
+  for (i = 0; i < 7; i++) {
+    let messung = weather.daily[i];
+    console.log(messung);
+
+    // create parent div where bus info goes in
+    let div = document.createElement("div");
+    div.setAttribute("id", `day${i}`);
+    div.setAttribute("class", "day");
+    document.getElementById("weather").appendChild(div);
+
+    // crete a children div for every single info
+    let icon = document.createElement("img");
+    let weather_description = document.createElement("p");
+    let min = document.createElement("p");
+    let max = document.createElement("p");
+
+    icon.setAttribute("src", `https://openweathermap.org/img/wn/${messung.weather[0].icon}@2x.png`)
+    weather_description.innerHTML = messung.weather[0].description
+    min.innerHTML = Math.round(messung.temp.min);
+    max.innerHTML = Math.round(messung.temp.max);
+
+
+    icon.setAttribute("id", "icon");
+    weather_description.setAttribute("id", "weather_description");
+    min.setAttribute("id", "min");
+    max.setAttribute("id", "max");
+
+    document.getElementById(`day${i}`).appendChild(icon);
+    document.getElementById(`day${i}`).appendChild(weather_description);
+    document.getElementById(`day${i}`).appendChild(min);
+    document.getElementById(`day${i}`).appendChild(max);
+  }
+}
+
 /*
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 */
@@ -168,11 +142,11 @@ function writeTeachersToDoc(teachers) {
   arr.sort(function (a, b) {
     return b.count - a.count;
   });
-  console.log(arr);
+  //console.log(arr);
   document.getElementById("teacher_of_the_week").innerHTML = "";
   for (i = 0; i < 3; i++) {
     let teacher = arr[i];
-    console.log(teacher);
+    //console.log(teacher);
 
     let div = document.createElement("div");
 
@@ -196,13 +170,13 @@ function writeTeachersToDoc(teachers) {
 }
 
 async function fetchLeaderboard() {
-  console.log(`${teacher_url}/leaderboard`);
+  //console.log(`${teacher_url}/leaderboard`);
   const response = await fetch(`${teacher_url}/leaderboard`, {
     method: "get",
   });
 
   response.json().then((res) => {
-    console.log(res);
+    //console.log(res);
     writeTeachersToDoc(res);
   });
 }
@@ -214,32 +188,5 @@ async function fetchLeaderboard() {
 fetchBusescomingby(66001143);
 setInterval(fetchBusescomingby, 60000, 66001143);
 
-//endlessRadar();
-setImgofPrediction();
-setImgofRadar();
 fetchLeaderboard();
-
-/*
-fetchStation("Brixen").then((res) => {
-    console.log(res);
-    console.log(res.dm.points)
-    //document.getElementById("busse").innerHTML = res
-
-});
-*/
-/*
-fetchBusescomingby(66001143).then((res) => {
-    console.log(res);
-    console.log(res.departureList)
-    writeToDoc(res.departureList);
-});
-
-*/
-/*
-fetchWeatherRadar().then((res) => {
-    console.log(res);
-    console.log(res.rows[0].foregroundUrl);
-    setImgofRadar(res);
-});
-
-*/
+fetchWeather();
