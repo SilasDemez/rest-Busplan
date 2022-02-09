@@ -1,39 +1,37 @@
 * {
-  /* standart stuff for css */
+  /*standart css stuff*/
   margin: 0;
   padding: 0;
   font-family: "Roboto", sans-serif;
-  /*background-color: rgb(40, 42, 54); */
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(34, 30, 58);
+  color: white;
 }
-
 body {
+  margin: 10px;
   display: flex;
   flex-direction: column;
-  max-height: 100%;
-  max-width: 100%;
-}
-/*contains busse api and general dashboard*/
-.main {
-  display: flex;
-  flex-direction: row;
+  align-content: center;
   justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 90%;
+  overflow: hidden;
+}
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.dashboard {
 }
 
 #busse {
+  background-color: white;
+  border-radius: 10px;
+  width: fit-content;
   margin: 10px;
-  width: 20%;
-  max-height: 95vh;
-  overflow: auto;
+  height: fit-content;
 }
 
 .bus {
   justify-content: space-between;
-  background-color: white;
-  color: black;
   display: flex;
   width: 100%;
   flex-direction: row;
@@ -50,6 +48,7 @@ body {
 }
 
 #direction {
+  background-color: transparent;
   padding: 10px 10px;
   text-align: center;
 }
@@ -60,56 +59,4 @@ body {
   padding: 10px 10px;
   text-align: center;
   border-radius: 10px;
-}
-
-.board {
-  width: 80%;
-  height: 95vh;
-  background-color: white;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: top;
-}
-.weather {
-  width: 40%;
-  height: 90vh;
-}
-.weather_box_lightest {
-  width: 100%;
-  height: fit-content;
-  max-height: 50%;
-  object-fit: scale-down;
-  background-color: white;
-  color: white;
-}
-
-.img-responsive {
-  width: 100%;
-  height: 50%;
-  object-fit: scale-down;
-  /*background-image: url("//wetter.provinz.bz.it/images/fileN_d_background.jpg"); */
-  background-repeat: no-repeat;
-  background-position: top center;
-  background-size: cover;
-  margin: 0 auto;
-}
-
-#forecastdiv {
-  width: 100%;
-  height: 100%;
-  object-fit: scale-down;
-}
-#forecast {
-  width: 100%;
-  height: 50%;
-  object-fit: scale-down;
-}
-#other {
-  width: 60%;
-  height: 90vh;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: column;
 }

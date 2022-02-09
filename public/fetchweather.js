@@ -4,13 +4,14 @@ async function fetchWeatherForecast(url) {
     // if HTTP-status is 200-299
     // get the response body (the method explained below)
     wfjson = await weatherforecast.json();
+    console.log(wfjson)
   } else {
     alert("HTTP-Error: " + response.status);
   }
   return wfjson;
 }
 
-api_key = "71125cb6421b64923a47b4dd51af9a2a";
+let api_key = process.env.api_key;
 
 const wf = fetchWeatherForecast(
   //benutz openweather api
