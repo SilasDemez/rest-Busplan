@@ -31,6 +31,80 @@ async function fetchStation(ort) {
   return response.json();
 }
 
+async function fetchWeatherRadar() {
+  let url = `http://daten.buergernetz.bz.it/services/weather/radarhd?lang=de&format=json`;
+
+  try {
+    const response = await fetch(url, {
+      method: "get",
+    });
+
+    return response.json();
+  } catch (error) {
+    alert(
+      "Fehler bei der Kommunikation mitr der API. Bitte noch einmal probieren"
+    );
+  }
+}
+
+async function setImgofRadar(res) {
+  let durchlaufe = 0;
+  for (i = 0; ; i++) {
+    durchlaufe++;
+    await new Promise((r) => setTimeout(r, 1000));
+    document.getElementById("animation").src = res.rows[i].foregroundUrl;
+    console.log(durchlaufe);
+    if (durchlaufe == 169) {
+      console.log("Beende");
+      return 0;
+      break;
+    }
+    if (i == res.rows.length - 1) {
+      await new Promise((r) => setTimeout(r, 1000));
+      i = 0;
+    }
+  }
+}
+
+async function endlessRadar() {
+  while (true) {
+    console.log("Loading radar");
+    await fetchWeatherRadar().then((res) => {
+      console.log(res);
+      console.log(res.rows[0].foregroundUrl);
+      setImgofRadar(res);
+    });
+
+    await new Promise((r) => setTimeout(r, 183000));
+  }
+}
+
+async function setImgofPrediction() {
+  let i = 0,
+    url;
+  while (true) {
+    await new Promise((r) => setTimeout(r, 1000));
+    if (i == 33) i = 0;
+    url = `https://wetter.provinz.bz.it/images/wforecast${i}.jpg`;
+    //console.log(url)
+    document.getElementById("forecast").src = url;
+    i++;
+  }
+}
+
+async function setImgofRadar() {
+  let i = 1,
+    url;
+  while (true) {
+    await new Promise((r) => setTimeout(r, 1000));
+    if (i == 15) i = 1;
+    url = `https://wetter.provinz.bz.it/images/fileN_d_${i}.png`;
+    //console.log(url)
+    document.getElementById("animation").src = url;
+    i++;
+  }
+}
+
 function parseminute(minute) {
   if (minute.length == 1) {
     return "0" + minute;
@@ -44,9 +118,10 @@ function checkifTrain(lineID) {
 
 function writeToDoc(departureList) {
   console.log(departureList);
-  document.getElementById("busse").innerHTML = "";
+  document.getElementById("busse").innerHTML =
+    '<h2 style="text-align: center;margin-bottom:0.3rem;">Bus-Liste</h2>' + "";
 
-  for (i = 0; i < 15; i++) {
+  for (i = 0; i < 12; i++) {
     let bus = departureList[i];
     // create parent div where bus info goes in
     let div = document.createElement("div");
@@ -140,4 +215,32 @@ async function fetchLeaderboard() {
 fetchBusescomingby(66001143);
 setInterval(fetchBusescomingby, 60000, 66001143);
 
+//endlessRadar();
+setImgofPrediction();
+setImgofRadar();
 fetchLeaderboard();
+
+/*
+fetchStation("Brixen").then((res) => {
+    console.log(res);
+    console.log(res.dm.points)
+    //document.getElementById("busse").innerHTML = res
+
+});
+*/
+/*
+fetchBusescomingby(66001143).then((res) => {
+    console.log(res);
+    console.log(res.departureList)
+    writeToDoc(res.departureList);
+});
+
+*/
+/*
+fetchWeatherRadar().then((res) => {
+    console.log(res);
+    console.log(res.rows[0].foregroundUrl);
+    setImgofRadar(res);
+});
+
+*/

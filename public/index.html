@@ -5,15 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nivalis</title>
-    <script src="index.js"></script>
+    <script src="fetchweather.js"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="duck.png" type="image/x-icon">
     <style>@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap');</style>
 </head>
 <body>
     <h1>RESTBUS DASHBOARD</h1>
-    <div class="dashboard">
+    <div class="main">
         <div id="busse"></div>
+
+        <div class="board">
+
+            <div class="weather">
+                <div class="weather_box_lightest" >
+                    <img alt="Aktuelles Radarbild" class="img-responsive" id="animation" src="//wetter.provinz.bz.it/images/fileN_d_init.png"  />
+                </div>
+                <div id="forecastdiv">
+                    <img id="forecast" src="https://reactnativecode.com/wp-content/uploads/2018/02/Default_Image_Thumbnail.png">
+                </div>
+                
+            </div>
+            <div id="other">
+                <div id="teacher_of_the_week"></div>
+                <div class="forecast">Lei incase</div>
+            </div>
+            
+        
+        </div>
+         
+
     </div>
+
+
+    
+    
+
 </body>
 </html>
