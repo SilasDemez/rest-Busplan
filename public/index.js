@@ -39,7 +39,7 @@ async function fetchWeather() {
   });
 
   response.json().then((res) => {
-    console.log(res);
+    //console.log(res);
     writeWeatherToDoc(res);
   });
 }
@@ -51,9 +51,10 @@ function checkifTrain(lineID) {
 
 function writeToDoc(departureList) {
   //console.log(departureList);
-  document.getElementById("busse").innerHTML = "";
+  document.getElementById("busse").innerHTML =
+    '<h2 style="text-align: center;margin-bottom:0.3rem;">Bus-Liste</h2>' + "";
 
-  for (i = 0; i < 15; i++) {
+  for (i = 0; i < 12; i++) {
     let bus = departureList[i];
     // create parent div where bus info goes in
     let div = document.createElement("div");
@@ -70,7 +71,7 @@ function writeToDoc(departureList) {
 
     if (line_ID) {
       //console.log("Matched!");
-      console.log(line_ID);
+      //console.log(line_ID);
       lineID_p.innerHTML = `${line_ID}`;
     } else {
       lineID_p.innerHTML = `${bus.servingLine.number}`;
@@ -93,24 +94,22 @@ function writeToDoc(departureList) {
 }
 
 function writeWeatherToDoc(weather) {
-  let div = document.createElement("div");
-  div.setAttribute("id", `weather_info`);
-  div.innerHTML = "Wetter Brixen";
-  document.getElementById("weather").appendChild(div);
-
-  for (i = 0; i < 7; i++) {
+  for (i = 1; i < 6; i++) {
     let messung = weather.daily[i];
-    console.log(messung);
+    //console.log(messung);
 
     // create parent div where bus info goes in
-    let div = document.createElement("div");
+    let div = document.createElement("li");
     div.setAttribute("id", `day${i}`);
     div.setAttribute("class", "day");
-    document.getElementById("weather").appendChild(div);
+    document.getElementById("weather_forecast_items").appendChild(div);
 
     // crete a children div for every single info
     let icon = document.createElement("img");
     let weather_description = document.createElement("p");
+
+    let avg_temp = document.createElement("p");
+
     let min = document.createElement("p");
     let max = document.createElement("p");
 
@@ -119,6 +118,10 @@ function writeWeatherToDoc(weather) {
       `https://openweathermap.org/img/wn/${messung.weather[0].icon}@2x.png`
     );
     weather_description.innerHTML = messung.weather[0].description;
+
+    avg_temp.innerHTML =
+      Math.round((messung.temp.min + messung.temp.max) / 2) + "°";
+    //console.log(avg_temp);
     min.innerHTML = Math.round(messung.temp.min);
     max.innerHTML = Math.round(messung.temp.max);
 
@@ -126,11 +129,16 @@ function writeWeatherToDoc(weather) {
     weather_description.setAttribute("id", "weather_description");
     min.setAttribute("id", "min");
     max.setAttribute("id", "max");
+    avg_temp.setAttribute("id", "avg_temp");
 
     document.getElementById(`day${i}`).appendChild(icon);
-    document.getElementById(`day${i}`).appendChild(weather_description);
-    document.getElementById(`day${i}`).appendChild(min);
-    document.getElementById(`day${i}`).appendChild(max);
+
+    document.getElementById(`day${i}`).appendChild(avg_temp);
+
+    //eliminate cluttering --- ask silo
+    //document.getElementById(`day${i}`).appendChild(weather_description);
+    // document.getElementById(`day${i}`).appendChild(min);
+    // document.getElementById(`day${i}`).appendChild(max);
   }
 }
 
@@ -181,6 +189,10 @@ async function fetchLeaderboard() {
     writeTeachersToDoc(res);
   });
 }
+
+/*
+news------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+*/
 
 /*
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

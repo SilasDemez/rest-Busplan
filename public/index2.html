@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nivalis</title>
-    <script src="index2.js"></script>
+    <script src="index.js"></script>
+    <script src="fetchnews.js"></script>
     <link rel="stylesheet" href="style2.css">
     <link rel="shortcut icon" href="duck.png" type="image/x-icon">
     <style>@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap');</style>
@@ -15,7 +16,11 @@
     <div class="dashboard">
         <div id="busse"></div>
         <div id="teachers"></div>
-        <div id="weather"></div>
+        <div id="weather">
+            <h2>Wetter in Brixen</h2>
+            <ul id="weather_forecast_items" style="list-style:none;padding:0.5rem;">
+            </ul>
+        </div>
     </div>
 </body>
 </html>

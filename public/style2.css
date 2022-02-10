@@ -35,7 +35,7 @@ h1 {
   background-color: rgb(45, 50, 100);
   border-radius: 10px;
   width: fit-content;
-  margin: 20px;
+  margin: 1rem;
 
   height: fit-content;
 }
@@ -69,4 +69,28 @@ h1 {
   padding: 10px 10px;
   text-align: center;
   border-radius: 10px;
+}
+#weather {
+  text-align: center;
+  padding: 1rem;
+  margin: 1rem;
+  margin-left: 0rem !important; /*override the css*/
+  background-color: rgb(45, 50, 100);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  height: fit-content;
+}
+#weather_forecast_items {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: fit-content;
+}
+
+#avg_temp {
+  font-size: 1.5rem;
 }
