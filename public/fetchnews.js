@@ -1,11 +1,9 @@
-//get the news from www.fallmerayer.it
-async function fetchNews() {
-  const response = await fetch(
-    "https://www.fallmerayer.it/wp-json/wp/v2/posts?_embed&per_page=3"
-  );
-  const news = await response.json();
-  //console.log(news);
-  return news;
-}
+//cors disabled
+//https://book.hacktricks.xyz/pentesting-web/cors-bypass#bypass
 
-console.log(fetchNews());
+// const url =
+//   "https://cors-anywhere.herokuapp.com/" + "https://www.fallmerayer.it";
+
+// fetch(url)
+//   .then((res) => res.text())
+//   .then((html) => console.log(html));

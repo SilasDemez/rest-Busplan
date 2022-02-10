@@ -94,6 +94,35 @@ function writeToDoc(departureList) {
 }
 
 function writeWeatherToDoc(weather) {
+  let current = weather.current;
+  console.log(current);
+  //save current weather variables
+  let temp = current.temp;
+
+  //save daily weather variables
+  let daily = weather.daily;
+  let daily_temp = daily[0].temp;
+  let daily_feels_like = daily[0].feels_like;
+  let daily_humidity = daily[0].humidity;
+  let daily_wind_speed = daily[0].wind_speed;
+  let daily_wind_deg = daily[0].wind_deg;
+  let daily_weather_desc = daily[0].weather[0].description;
+  let daily_weather_icon = daily[0].weather[0].icon;
+
+  //add current weather variables to todays weather
+  document
+    .getElementById("weather_today_icon")
+    .setAttribute(
+      "src",
+      `https://openweathermap.org/img/wn/${daily_weather_icon}@2x.png`
+    );
+  document.getElementById(
+    "weather_today_temp"
+  ).innerHTML = `${daily[0].temp.day.toFixed(1)}°C`;
+  document.getElementById(
+    "weather_today_desc"
+  ).innerHTML = `${daily_weather_desc}`;
+
   for (i = 1; i < 6; i++) {
     let messung = weather.daily[i];
     //console.log(messung);
@@ -119,8 +148,7 @@ function writeWeatherToDoc(weather) {
     );
     weather_description.innerHTML = messung.weather[0].description;
 
-    avg_temp.innerHTML =
-      Math.round((messung.temp.min + messung.temp.max) / 2) + "°";
+    avg_temp.innerHTML = `${messung.temp.day.toFixed(1)}°C`;
     //console.log(avg_temp);
     min.innerHTML = Math.round(messung.temp.min);
     max.innerHTML = Math.round(messung.temp.max);
