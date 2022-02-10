@@ -4,7 +4,7 @@ async function fetchWeatherForecast(url) {
     // if HTTP-status is 200-299
     // get the response body (the method explained below)
     wfjson = await weatherforecast.json();
-    console.log(wfjson)
+    console.log(wfjson);
   } else {
     alert("HTTP-Error: " + response.status);
   }
