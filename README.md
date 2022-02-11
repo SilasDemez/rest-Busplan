@@ -150,5 +150,5 @@ Im Browser dann die url: localhost:3000 angeben und die App wird abgerufen
 
 ## ✍️ Autoren <a name = "authors"></a>
 
-- [@SilasDemez](https://github.com/SilasDemez) - Allroud Developer
-- [@Gavaii](https://github.com/Gavaii) - Allroud Developer
+- [@SilasDemez](https://github.com/SilasDemez) - Allround Developer
+- [@Gavaii](https://github.com/Gavaii) - Allround Developer
