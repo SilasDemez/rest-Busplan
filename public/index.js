@@ -268,3 +268,4 @@ setInterval(fetchBusescomingby, 60000, 66001143);
 fetchLeaderboard();
 fetchWeather();
 fetchPosts();
+$(".loader-container").fadeOut(1000);
