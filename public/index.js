@@ -194,7 +194,7 @@ function writeTeachersToDoc(teachers) {
 
     let div = document.createElement("div");
 
-    div.setAttribute("id", `${teacher.name}`);
+    div.setAttribute("id", `teacher${i}`);
     div.setAttribute("class", "teacher");
 
     document.getElementById("teacher_of_the_week").appendChild(div);
@@ -208,8 +208,8 @@ function writeTeachersToDoc(teachers) {
     count.innerHTML = teacher.count;
     count.setAttribute("class", "counts");
 
-    document.getElementById(`${teacher.name}`).appendChild(name);
-    document.getElementById(`${teacher.name}`).appendChild(count);
+    document.getElementById(`teacher${i}`).appendChild(name);
+    document.getElementById(`teacher${i}`).appendChild(count);
   }
 }
 

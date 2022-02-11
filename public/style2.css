@@ -135,3 +135,21 @@ h1 {
 .post_image {
   width: 10vw;
 }
+
+
+#teacher0 {
+  font-size: 3vmin;
+  color: #fff;
+  text-align: center;
+  margin: 2.5vmin;
+  margin-left: 4vmin;
+  margin-right: 4vmin;
+  margin-bottom: 3vmin;
+}
+#teacher1,
+#teacher2 {
+  font-size: 1.9vmin;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 3vmin;
+}
