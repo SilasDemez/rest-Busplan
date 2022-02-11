@@ -43,7 +43,7 @@ Wir haben dabei mit mehreren APIs gearbeitet:
  - [OpenWeather Map](#openweathermap)
  - [Eigene API --> Teacher of the Week]()
 
-## 👾 API_Beschreibung <a name = "API_Beschreibung"></a>
+## 👾 API_Beschreibung <a name = "APIBeschreibung"></a>
 
 ### Südtiroler Transport Webservices <a name = "stawebs"></a>
 
