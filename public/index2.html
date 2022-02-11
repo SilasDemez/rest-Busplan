@@ -8,7 +8,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="index.js"></script>
-    <script src="fetchnews.js"></script>
+    <script src="fetchnews.js" defer></script>
     <link rel="stylesheet" href="style2.css" />
     <link rel="shortcut icon" href="duck.png" type="image/x-icon" />
     <style>
@@ -37,7 +37,11 @@
             style="list-style: none; padding: 0.5rem"
           ></ul>
         </div>
+      
         <div id="qrcode_teacher"></div>
+      </div>
+      <div class="half-dashboard">
+        <div class="board" id="news"></div>
       </div>
     </div>
   </body>
