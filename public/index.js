@@ -1,4 +1,13 @@
 const teacher_url = "https://teacher-of-the-week.herokuapp.com";
+var daysOfWeek = [
+  "Sonntag",
+  "Montag",
+  "Dienstag",
+  "Mittwoch",
+  "Donnerstag",
+  "Freitag",
+  "Samstag",
+];
 
 async function fetchBusescomingby(haltestellenID) {
   let url = `https://efa.sta.bz.it/apb/XML_DM_REQUEST?&locationServerActive=1&stateless=1&type_dm=any&name_dm=${haltestellenID}&mode=direct&outputFormat=JSON`;
@@ -52,7 +61,7 @@ function checkifTrain(lineID) {
 function writeToDoc(departureList) {
   //console.log(departureList);
   document.getElementById("busse").innerHTML =
-    '<h2 style="text-align: center;margin-bottom:0.3rem;">Bus-Liste</h2>' + "";
+    '<h2 style="text-align: center;margin-bottom:0.3vh;">Bus-Liste</h2>' + "";
 
   for (i = 0; i < 12; i++) {
     let bus = departureList[i];
@@ -135,6 +144,7 @@ function writeWeatherToDoc(weather) {
 
     // crete a children div for every single info
     let icon = document.createElement("img");
+    let day = document.createElement("h4");
     let weather_description = document.createElement("p");
 
     let avg_temp = document.createElement("p");
@@ -150,6 +160,10 @@ function writeWeatherToDoc(weather) {
 
     avg_temp.innerHTML = `${messung.temp.day.toFixed(1)}°C`;
     //console.log(avg_temp);
+
+    let date = new Date(messung.dt * 1000);
+
+    day.innerHTML = daysOfWeek[date.getDay()];
     min.innerHTML = Math.round(messung.temp.min);
     max.innerHTML = Math.round(messung.temp.max);
 
@@ -160,7 +174,7 @@ function writeWeatherToDoc(weather) {
     avg_temp.setAttribute("id", "avg_temp");
 
     document.getElementById(`day${i}`).appendChild(icon);
-
+    document.getElementById(`day${i}`).appendChild(day);
     document.getElementById(`day${i}`).appendChild(avg_temp);
 
     //eliminate cluttering --- ask silo
@@ -244,6 +258,7 @@ async function fetchPosts() {
           .then((data) => {
             try {
               let img = data[0].guid.rendered;
+
               let img_tag = document.createElement("img");
               img_tag.setAttribute("src", img);
               img_tag.setAttribute("class", "post_image");
@@ -257,11 +272,11 @@ async function fetchPosts() {
       }
     });
 }
-
 /*
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 */
 
+//haltestelle dantestrasse
 fetchBusescomingby(66001143);
 setInterval(fetchBusescomingby, 60000, 66001143);
 
@@ -273,6 +288,8 @@ fetchPosts().then(() => {
     $(".loader-container").fadeOut(1000);
   }, 5000);
 });
+
+setInterval(rotatePosts, 10000);
 
 //fetch news and weather daily
 setInterval(fetchWeather, 86400000);
