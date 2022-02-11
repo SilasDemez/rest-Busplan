@@ -27,7 +27,7 @@
 * [Südtiroler Transport Webservices](#stawebs)
 * [OpenWeather Map](#openweathermap)
 * [Eigene API --> Teacher of the Week](#toftw)
-* [Webscraper mit Fallmerayer News](#webscraper)
+* [Fallmerayer News](#webscraper)
 * [Installation](#instalation)
 * [Authoren](#authors)
 
@@ -128,7 +128,9 @@ Beid er Teacher Of The Week API handelt es sich um ein Programm mit welchem man 
 [Teacher-Of-The-Week](https://github.com/kaffarell/teacher-of-the-week)
 
 
-## 👌 Webscraper <a name = "webscraper"></a>
+## 👌 Fallmerayer news <a name = "news"></a>
+
+Auf der Website von unserere Schule gibt es immer interessante News und Artikel. Deswegen werden diese Neuigkeiten mithilfe der WordPress API abgerufen und in das Dashboard geschrieben. Die Wordpress API funktioniert deswegeen weil die Fallmerayer Website mit WordPress arbeitet
 
 
 ## Installation
