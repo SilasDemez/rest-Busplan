@@ -280,3 +280,7 @@ fetchPosts().then(() => {
     $(".loader-container").fadeOut(1000);
   }, 5000);
 });
+
+//fetch news and weather daily
+setInterval(fetchWeather, 86400000);
+setInterval(fetchPosts, 86400000);
