@@ -9,7 +9,7 @@
 
 [![Status](https://img.shields.io/badge/status-active-success.svg)]()
 [![GitHub Issues](https://img.shields.io/github/issues/SilasDemez/rest-Busplan.svg)](https://github.com/SilasDemez/rest-Busplan/issues)
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/SilasDemez/rest-Busplan.svg)](https://github.com/kylelobo/The-Documentation-Compendium/pulls)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/SilasDemez/rest-Busplan.svg)](https://github.com/SilasDemez/rest-Busplan/pulls)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
 </div>
@@ -22,15 +22,14 @@
 
 ## 📝 Inhaltsangabe
 
-- [Beschreibung](#Beschreibung)
-- [API Beschreibung](#APIBeschreibung)
-- [Deployment](#deployment)
-- [Usage](#usage)
-- [Built Using](#built_using)
-- [TODO](../TODO.md)
-- [Contributing](../CONTRIBUTING.md)
-- [Authors](#authors)
-- [Acknowledgments](#acknowledgement)
+* [Beschreibung](#Beschreibung)
+* [API Beschreibung](#APIBeschreibung)
+* [Südtiroler Transport Webservices](#stawebs)
+* [OpenWeather Map](#openweathermap)
+* [Eigene API --> Teacher of the Week](#toftw)
+* [Webscraper mit Fallmerayer News](#webscraper)
+* [Installation](#instalation)
+* [Authoren](#authors)
 
 
 
@@ -41,10 +40,10 @@ Nivalis ist das Ergebnis eines Schulprojekts bei dem das Ziel war sich mit Rest 
 Wir haben dabei mit mehreren APIs gearbeitet: 
  - [Südtiroler Transport Webservices](#stawebs)
  - [Südtiroler Wetter Webservices]()
- - [OpenWeather Map]()
+ - [OpenWeather Map](#openweathermap)
  - [Eigene API --> Teacher of the Week]()
 
-## 👾 API_Beschreibung <a name = "API_Beschreibung"></a>
+## 👾 API_Beschreibung <a name = "APIBeschreibung"></a>
 
 ### Südtiroler Transport Webservices <a name = "stawebs"></a>
 
@@ -92,101 +91,64 @@ Für uns relevant sind zwei Varianten der Request. Einmal lassen wir uns die Hal
     .dateTime.hour:         <Stunde>
     .dateTime.minute:       <Minute>
     
+### OpenWeatherMap <a name = "openweathermap"></a>
+
+Die OpenWeatherMap API ist eine einfache und kostenlose WetterAPI. Man kann mit ihr allerhand Wetterdaten abrufen.
+
+Wir benutzen die OpenWeatherMap API um das tägliche Wetter anzuzeigen. Das passiert über diesen link:
+
+url: https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
+
+Es wird für einen bestimmten Ort (Koordinaten das Wetter angezeigt)
+
+#### parameters:
+
+    lat:        <Koordinaten des Zielorts>
+    lon:        <Koordinaten des Zielorts>
+    exclude:    <Berichte ausschließen (minutely, hourly, daily)>
+    appid:      <API Key den man bei der Registrierung für die API bekommt>
+    lang:       <Sprache der zurückgegebenen Daten>
+
+#### response:
+
+    Array mit täglichen Daten unter daily[]
+    .temp               <Temperatur des Tages>
+    .feels_like         <Gefühlte Temperatur>
+    .humidity           <Feuchtigkeit>
+    .wind_speed         <Windgeschwindigkeit>
+    .wind_deg           <Windgrad>
+    .description        <Wetterbeschreibung z.B.: wolkig>
+    .weather[0].icon    <Id des Wettericons>
 
 
+### Eigene API - Teacher Of The Week <a name = "toftw"></a>
+
+Beid er Teacher Of The Week API handelt es sich um ein Programm mit welchem man den besten Leherer der Woche wählen kann. Es gibt einLeaderborad und eine Votingseite wo man seine/n Lieblingslehrer/in übers Smartphone oder PCs wählen kann. Für mehr Infos besuche:
+
+[Teacher-Of-The-Week](https://github.com/kaffarell/teacher-of-the-week)
 
 
-The project can easily be cloned and worked on. You need a few essential npm libraries.🔽
-
-### Prerequisites
-
-#### Node JS
-#### NPM
-#### NPM libraries
-```
-express
-dotenv
-body-parser
-mysql
-mariadb
-```
-
-### Installing
-
-Install Node JS - search in browser, download and install
-Install npm - search in browser, download and install
-Navigate to the project directory
-
-```
-npm install express
-npm install dotenv
-npm install body-parser
-npm install mysql
-npm install mariadb
-```
-
-Create a .env file where you enter the details of your own strava api --> CLIENT_ID and CLIENT_SECRET
-Edit the const redirectURL in index.html and enter your own url (also localhost)
-In app.js edit the host, user and password of your mariadb database (database files are coming soon)
-
-Run the project
-```
-sudo node app.js
-```
-
-Open the browser
-
-## 🔧 Running the tests <a name = "tests"></a>
-
-Explain how to run the automated tests for this system.
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## 🎈 Usage <a name="usage"></a>
-
-Add notes about how to use the system.
-
-## 🚀 Deployment <a name = "deployment"></a>
-
-Add additional notes about how to deploy this on a live system.
-
-## ⛏️ Built Using <a name = "built_using"></a>
-
-- [MongoDB](https://www.mongodb.com/) - Database
-- [Express](https://expressjs.com/) - Server Framework
-- [VueJs](https://vuejs.org/) - Web Framework
-- [NodeJs](https://nodejs.org/en/) - Server Environment
-
-## ✍️ Authors <a name = "authors"></a>
-
-- [@kylelobo](https://github.com/kylelobo) - Idea & Initial work
-
-See also the list of [contributors](https://github.com/kylelobo/The-Documentation-Compendium/contributors) who participated in this project.
-
-## 🎉 Acknowledgements <a name = "acknowledgement"></a>
-
-- Hat tip to anyone whose code was used
-- Inspiration
-- References
+## 👌 Webscraper <a name = "webscraper"></a>
 
 
-# Rest-Busplan
+## Installation
+
+Um die App zu bearbeiten muss man zuerst NodeJS und NPM installiert haben. Das kann man ganz einfach vom Browser herunterladen (Windows) oder mit ein paar Befehlen instllieren (Linux)
+
+Anschließend muss man ein Terminal aufmachen und sich zum Ordner begeben. Um das Projekt zuum Laufen zu bringen mus s man zuerst express installieren
+    
+    npm install express
+
+Anschließend kann man die App starten:
+
+node app.js
+
+Dies startet den lokalen Webserver auf dem Port 3000
+
+Im Browser dann die url: localhost:3000 angeben und die App wird abgerufen
 
 
+## ✍️ Autoren <a name = "authors"></a>
 
-## Fetches
-
+- [@SilasDemez](https://github.com/SilasDemez) - Allround Developer
+- [@Gavaii](https://github.com/Gavaii) - Allround Developer
