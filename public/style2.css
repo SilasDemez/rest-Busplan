@@ -54,26 +54,42 @@ body {
 
 h1 {
   margin-top: 1vh;
-  height: 10%;
+  font-size: 5vmin;
+  height: fit-content;
   text-align: center;
   margin-bottom: 0.7vh;
 }
 
+h2 {
+  font-size: 2.5vmin;
+}
 .dashboard {
+  margin: 2vmin;
   display: flex;
   flex-direction: row;
   align-items: flex-end;
+  justify-content: space-between;
   height: 90%;
+  max-height: 90%;
 }
 
 #busse {
-  padding: 2vh;
+  align-self: center;
+  padding: 1vh;
   background-color: rgb(45, 50, 100);
   border-radius: 1.5vh;
   width: fit-content;
-  margin: 2vh;
-
+  max-width: 40vw;
+  max-height: 90vh;
   height: fit-content;
+}
+.half-dashboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+  max-height: 100%;
 }
 
 .bus {
@@ -107,7 +123,6 @@ h1 {
   border-radius: 1.5vh;
 }
 .board {
-  align-self: center;
   text-align: center;
   padding: 2vh;
   margin: 2vh;
@@ -124,7 +139,6 @@ h1 {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
   height: fit-content;
 }
 
@@ -133,18 +147,32 @@ h1 {
 }
 
 .post_image {
-  width: 10vh;
+  width: 15vw;
+  max-height: 40vh;
+  min-height: 40vh;
+}
+#news {
+  font-size: 1.9vmin;
+  width: fit-content;
+}
+#teacher_of_the_week {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+  width: 27vw;
+  max-height: 40%;
 }
 
+#teacher_of_the_week img {
+  width: 10vw;
+}
 
 #teacher0 {
   font-size: 3vmin;
   color: #fff;
   text-align: center;
   margin: 2.5vmin;
-  margin-left: 4vmin;
-  margin-right: 4vmin;
-  margin-bottom: 3vmin;
 }
 #teacher1,
 #teacher2 {
@@ -152,4 +180,8 @@ h1 {
   color: #fff;
   text-align: center;
   margin-bottom: 3vmin;
+}
+#leaders {
+  display: flex;
+  flex-direction: column;
 }
