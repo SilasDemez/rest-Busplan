@@ -267,5 +267,9 @@ setInterval(fetchBusescomingby, 60000, 66001143);
 
 fetchLeaderboard();
 fetchWeather();
-fetchPosts();
-$(".loader-container").fadeOut(1000);
+fetchPosts().then(() => {
+  //sleep for 5 seconds
+  setTimeout(() => {
+    $(".loader-container").fadeOut(1000);
+  }, 5000);
+});
