@@ -125,12 +125,20 @@ function writeWeatherToDoc(weather) {
       "src",
       `https://openweathermap.org/img/wn/${daily_weather_icon}@2x.png`
     );
+  document
+    .getElementById("weather_today_icon")
+    .setAttribute("style", "width:7vmax;height:7vmax;");
   document.getElementById(
     "weather_today_temp"
   ).innerHTML = `${daily[0].temp.day.toFixed(1)}°C`;
   document.getElementById(
     "weather_today_desc"
   ).innerHTML = `${daily_weather_desc}`;
+
+  document.getElementById("humidity").innerHTML =
+    "Luftfeuchtigkeit: " + `${daily_humidity}%`;
+  document.getElementById("windspeed").innerHTML =
+    "Windgeschwindigkeit: " + `${daily_wind_speed}m/s`;
 
   for (i = 1; i < 6; i++) {
     let messung = weather.daily[i];
@@ -208,6 +216,11 @@ function writeTeachersToDoc(teachers) {
   );
   a.setAttribute("id", "qr-code");
   document.getElementById("teacher_of_the_week").appendChild(a);
+
+  let h3leader = document.createElement("h3");
+  h3leader.innerHTML = "Leaderboard";
+
+  document.getElementById("leaders").appendChild(h3leader);
 
   for (i = 0; i < 3; i++) {
     let teacher = arr[i];

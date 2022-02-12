@@ -22,32 +22,30 @@
     </div>
 
     <h1>RESTBUS DASHBOARD</h1>
-    <h3 style="text-align: center;">Coder: Demez Silas und Valentin Gabriel</h3>
+    <h3 style="text-align: center; font-size: 2vmin;">Coder: Demez Silas und Valentin Gabriel</h3>
     <div class="dashboard">
       <div  id="busse"></div>
-      <div class="half-dashboard">
-        
-        <div class="board" id="weather">
-          <h2>Wetter in Brixen</h2>
-          <!-- todays weather -->
-          <div id="weather_today">
-            <h3>Heute</h3>
-            <img id="weather_today_icon"></img>
-            <p id="weather_today_temp"></p>
-            <p id="weather_today_desc"></p>
-          </div>
-          <!-- forecast -->
-          <ul
-            id="weather_forecast_items"
-            style="list-style: none; padding: 0.5rem"
-          ></ul>
+      <div class="board" id="weather" style="align-self: center;justify-self: center;">
+        <h2>Wetter in Brixen</h2>
+        <!-- todays weather -->
+        <div id="weather_today">
+          <h3 style="font-size:2.5vmin;">Heute</h3>
+          <img id="weather_today_icon"></img>
+          <p id="weather_today_temp"></p>
+          <p id="weather_today_desc"></p>
+          <p id="humidity"></p>
+          <p id="windspeed"></p>
         </div>
+        <!-- forecast -->
+        <ul
+          id="weather_forecast_items"
+          style="list-style: none; padding: 0.5rem;font-size: 2vmin;"
+        ></ul>
+      </div>
   
-      
-    </div>
     <div class="half-dashboard">
       <div class="board" id="teacher_of_the_week">
-        <h3>Leaderboard</h3>
+        
       </div>
       
       <div class="board" id="news">
