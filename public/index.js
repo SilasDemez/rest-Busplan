@@ -324,6 +324,7 @@ fetchBusescomingby(66001143);
 setInterval(fetchBusescomingby, 60000, 66001143);
 
 fetchLeaderboard();
+setInterval(fetchleaderboard, 10000);
 fetchWeather();
 fetchPosts().then(() => {
   //sleep for 5 seconds
