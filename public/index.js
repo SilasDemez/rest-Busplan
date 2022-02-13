@@ -271,7 +271,7 @@ async function fetchPosts() {
         post.setAttribute("class", "post");
         post.setAttribute(
           "style",
-          "display:flex;align-items:center;justify-content:space-evenly;height:40vmin;flex-direction:column;"
+          "display:flex;align-items:center;justify-content:space-evenly;height:42vmin;flex-direction:column;"
         );
         post.setAttribute("id", `post${i}`);
 
