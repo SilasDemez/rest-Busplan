@@ -155,11 +155,15 @@ h2 {
   min-height: 40vh;
 }
 #news {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin: 2vmin;
   margin-bottom: 0px;
   font-size: 1.9vmin;
   width: fit-content;
   min-height: 45vmin;
+  min-width: 26vw;
   height: fit-content;
 }
 #teacher_of_the_week {

@@ -269,11 +269,16 @@ async function fetchPosts() {
       for (let i = 0; i < posts.length; i++) {
         let post = document.createElement("div");
         post.setAttribute("class", "post");
+        post.setAttribute(
+          "style",
+          "display:flex;align-items:center;justify-content:space-evenly;height:40vmin;flex-direction:column;"
+        );
         post.setAttribute("id", `post${i}`);
 
         post.innerHTML = posts[i].title.rendered;
 
         //get the id of each post
+        let post_link = posts[i].link;
         let id = posts[i].id;
 
         let img_url =
@@ -292,6 +297,14 @@ async function fetchPosts() {
                 document.getElementById("news").appendChild(post);
                 document.getElementById(`post${i}`).appendChild(img_tag);
               } else {
+                let qr_code = document.createElement("img");
+                qr_code.setAttribute(
+                  "src",
+                  `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${post_link}`
+                );
+                qr_code.setAttribute("class", "qr_code");
+                document.getElementById("news").appendChild(post);
+                document.getElementById(`post${i}`).appendChild(qr_code);
               }
             } catch (error) {
               console.log("no image");
@@ -309,7 +322,7 @@ function rotatePosts() {
   for (let i = 0; i < posts.length; i++) {
     posts[i].style.display = "none";
   }
-  posts[currentpost].style.display = "block";
+  posts[currentpost].style.display = "flex";
   currentpost++;
   if (currentpost >= posts.length) {
     currentpost = 0;
